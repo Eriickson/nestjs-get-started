@@ -10,6 +10,7 @@ export const databaseProvider = [
     async useFactory(config: ConfigService) {
       return {
         type: 'mysql',
+        database: config.get('DB_NAME'),
         host: config.get('HOST'),
         username: config.get('DB_USERNAME'),
         password: config.get('DB_PASSWORD'),

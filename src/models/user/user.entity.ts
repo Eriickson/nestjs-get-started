@@ -1,4 +1,14 @@
-import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  PrimaryColumn,
+  OneToOne,
+  JoinTable,
+  ManyToMany,
+} from 'typeorm';
+import { Role } from '../role/role.entity';
+import { UserDetail } from './user.details.entity';
 
 @Entity('users')
 export class User extends BaseEntity {
@@ -22,4 +32,12 @@ export class User extends BaseEntity {
 
   @Column({ type: 'timestamp', name: 'updated_at' })
   updatedAt: Date;
+
+  @ManyToMany(() => Role, (role) => role.users)
+  @JoinTable({ name: 'user_roles' })
+  roles: Role[];
+
+  @OneToOne(() => UserDetail, { cascade: true, nullable: false, eager: true })
+  @JoinTable({ name: 'detail_id' })
+  details: UserDetail;
 }
