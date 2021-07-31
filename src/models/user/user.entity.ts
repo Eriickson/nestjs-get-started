@@ -25,7 +25,7 @@ export class User extends BaseEntity {
   password: string;
 
   @Column({ type: 'bool', default: true })
-  status: string;
+  status: boolean;
 
   @Column({ type: 'timestamp', name: 'created_at' })
   createdAt: Date;

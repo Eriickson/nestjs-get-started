@@ -1,14 +1,14 @@
 import {
   BaseEntity,
   Column,
-  EntityRepository,
+  Entity,
   JoinColumn,
   ManyToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { User } from '../user/user.entity';
 
-@EntityRepository()
+@Entity('roles')
 export class Role extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: number;

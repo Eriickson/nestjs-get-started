@@ -6,11 +6,12 @@ import { ConfigService } from './config/config.service';
 import { DatabaseModule } from './database/database.module';
 import { UserModule } from './models/user/user.module';
 import { RoleModule } from './models/role/role.module';
+import { UserService } from './models/user/user.service';
 
 @Module({
   imports: [ConfigModule, DatabaseModule, UserModule, RoleModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, UserService],
 })
 export class AppModule {
   static port: number | string;
